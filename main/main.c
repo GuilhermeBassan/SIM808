@@ -12,10 +12,11 @@
 
 #include "resources/SSD1306.h"
 
-#define ECHO_TEST_TXD  (GPIO_NUM_1)
-#define ECHO_TEST_RXD  (GPIO_NUM_3)
-#define ECHO_TEST_RTS  (UART_PIN_NO_CHANGE)
-#define ECHO_TEST_CTS  (UART_PIN_NO_CHANGE)
+#define UART0_TX  	(GPIO_NUM_1)
+#define UART0_RX  	(GPIO_NUM_3)
+
+#define UART2_TX	(GPIO_NUM_17)
+#define UART2_TX	(GPIO_NUM_16)
 
 #define SDA_PIN GPIO_NUM_15
 #define SCL_PIN GPIO_NUM_2
@@ -170,7 +171,7 @@ int uart0Begin()
 	};
 
 	uart_param_config(UART_NUM_0, &uart0_config);
-	uart_set_pin(UART_NUM_0, (GPIO_NUM_1), (GPIO_NUM_3),
+	uart_set_pin(UART_NUM_0, (UART0_TX), (UART0_RX),
 			     UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
 	uart_driver_install(UART_NUM_0, BUF_SIZE * 2, 0, 0, NULL, 0);
 
@@ -190,7 +191,7 @@ int uart2Begin()
 	};
 
 	uart_param_config(UART_NUM_2, &uart2_config);
-	uart_set_pin(UART_NUM_2, (GPIO_NUM_17), (GPIO_NUM_16),
+	uart_set_pin(UART_NUM_2, (UART2_TX), (UART2_RX),
 				 UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
 	uart_driver_install(UART_NUM_2, BUF_SIZE * 2, 0, 0, NULL, 0);
 
