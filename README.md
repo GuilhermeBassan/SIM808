@@ -1,10 +1,10 @@
 # ESP32 - SIM808 DevBoard
 This is project using the ESP32 uC and the SIM808 GSM/GPRS/Bluetooth/GPS board.
 
-# Hardware Wiring
+## Hardware Wiring
 
 | ESP32 Interface | #define | ESP32 Pin | Use |
-|---------- | ---------- | ---------- | ---------- | ---------- |
+| ---------- | ---------- | ---------- | ---------- |
 | UART0 (TxD) | UART0_TX | GPIO1 | DEBUG |
 | UART0 (RxD) | UART0_RX | GPIO3 | DEBUG |
 | UART2 (TxD) | UART2_TX | GPIO17 | SIM808 communication |
