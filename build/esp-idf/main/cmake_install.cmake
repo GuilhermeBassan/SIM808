@@ -1,8 +1,8 @@
-# Install script for directory: C:/Github/eclipse-workspace/uart_test/main
+# Install script for directory: /home/guilherme/Documentos/eclipse-workspace/uart_test/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/uart_echo")
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

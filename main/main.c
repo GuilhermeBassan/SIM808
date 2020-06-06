@@ -16,7 +16,7 @@
 #define UART0_RX  	(GPIO_NUM_3)
 
 #define UART2_TX	(GPIO_NUM_17)
-#define UART2_TX	(GPIO_NUM_16)
+#define UART2_RX	(GPIO_NUM_16)
 
 #define SDA_PIN GPIO_NUM_15
 #define SCL_PIN GPIO_NUM_2
@@ -35,14 +35,20 @@ void espDebug(const char *message);
 
 void setup();
 
+// Peripherals init functions
 int i2cBegin();
 int uart0Begin();
 int uart2Begin();
 
+// Module init functions
 int commBegin();
 int gpsBegin();
 static void gpsRequest();
 
+// Auxiliary functions
+int searchPacket(uint8_t *data, const uint8_t *str);
+
+// Tasks
 static void speedDisplay();
 
 void app_main()
@@ -57,7 +63,7 @@ void app_main()
 
 void espDebug(const char *message)
 {
-	//printf(message);
+	printf(message);
 }
 
 void setup()
@@ -231,4 +237,28 @@ int gpsBegin()
     vTaskDelay(100/portTICK_PERIOD_MS);
 
     return 0;
+}
+
+int searchPacket(uint8_t *data, const uint8_t *str)
+{
+	int8_t out = -1, i = 0, j = 0;
+
+	for(i = 0; i <= sizeof(data); i++)
+	{
+		if(data[i] == str[j])
+		{
+			while(j != '\0')
+			{
+				if(data[i + j] == str[j])
+				{
+					out = 0;
+					j++;
+				} else {
+					out = -1;
+				}
+			}
+		}
+	}
+
+	return out;
 }
